@@ -86,18 +86,26 @@ app.get('/workouts/:userId', async (req, res) => {
   }
 });
 
-// Route to get workout history for a specific user
-app.get('/getWorkoutHistory/:userId', async (req, res) => {
+// Route to get total workouts by date
+app.get('/workouts/totalByDate/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
-    const workouts = await Workout.find({ userId });
+    const workouts = await Workout.aggregate([
+      { $match: { userId: userId } },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+          totalWorkouts: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } } // Sort by date
+    ]);
     res.status(200).json(workouts);
   } catch (error) {
-    console.error('Error fetching workout history:', error);
-    res.status(500).send('Error fetching workout history');
+    console.error('Error fetching total workouts:', error);
+    res.status(500).send('Error fetching total workouts');
   }
 });
-
 
 // Start the server
 const PORT = 5000;
