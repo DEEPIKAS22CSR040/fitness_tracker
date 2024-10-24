@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+body {
+  margin: 0; /* Remove default margin */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* Header styles */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between; /* Space between the website name and login button */
+  align-items: center; /* Center items vertically */
+  padding: 10px 20px; /* Padding around the header */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for contrast */
+  position: relative; /* Changed from fixed to relative */
+  height: 50px; /* Set a fixed height for the header */
+  z-index: 1; /* Ensure the header is above other elements */
 }
 
-.App-link {
-  color: #61dafb;
+.website-name {
+  font-size: 1.5rem; /* Adjust font size */
+  color: #ffffff; /* White color for the text */
+  font-weight: bold; /* Make the text bold */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Button container styles */
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
+}
+
+/* Full image styling */
+.image-container {
+  width: 100vw; /* Full width of the viewport */
+  height: calc(100vh - 50px); /* Full height of the viewport minus header height */
+  overflow: hidden; /* Prevent overflow */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any padding */
+}
+
+.full-image {
+  width: 100%; /* Full width of the container */
+  height: 100%; /* Full height of the container */
+  object-fit: cover; /* Cover the entire area without distortion */
+}
+
+/* Styles for buttons */
+button {
+  margin: 10px; /* Space around buttons */
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px; /* Font size */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+/* Change button color on hover */
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* User profile styles */
+.user-profile {
+  position: absolute; /* Positioning */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Centering */
+  color: white; /* Text color */
+  z-index: 1; /* Above the image */
 }
