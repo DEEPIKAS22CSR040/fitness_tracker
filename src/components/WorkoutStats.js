@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Bar, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
-  CategoryScale, // Required for bar chart x-axis
+  CategoryScale,
   LinearScale,
   BarElement,
-  ArcElement, // Required for pie chart
+  ArcElement,
   Tooltip,
   Legend,
 } from "chart.js";
@@ -102,25 +102,79 @@ function WorkoutStats() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      <h2>Workout Statistics</h2>
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Workout Statistics</h2>
 
-      <div style={{ width: "500px", height: "300px" }}>
-        <h3>Weekly Calories Burned</h3>
-        <Bar data={getWeeklyCaloriesData()} options={chartOptions} />
+      <div style={styles.chartContainer}>
+        <h3 style={styles.subHeading}>Weekly Calories Burned</h3>
+        <div style={styles.barChart}>
+          <Bar data={getWeeklyCaloriesData()} options={chartOptions} />
+        </div>
       </div>
 
-      <div style={{ width: "400px", height: "400px" }}>
-        <h3>Workout Type Distribution</h3>
-        <Pie data={getWorkoutTypeDistribution()} options={pieChartOptions} />
+      <div style={styles.chartContainer}>
+        <h3 style={styles.subHeading}>Workout Type Distribution</h3>
+        <div style={styles.pieChart}>
+          <Pie data={getWorkoutTypeDistribution()} options={pieChartOptions} />
+        </div>
       </div>
 
-      <div>
-        <h3>Total Calories Burned</h3>
-        <p>{totalCaloriesBurned} kcal</p>
+      <div style={styles.totalCalories}>
+        <h3 style={styles.subHeading}>Total Calories Burned</h3>
+        <p style={styles.caloriesText}>{totalCaloriesBurned} kcal</p>
       </div>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '40px',
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+    backgroundColor: '#f4f4f4',
+    borderRadius: '10px',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    maxWidth: '1000px',
+    margin: '0 auto',
+  },
+  heading: {
+    fontSize: '2rem',
+    color: '#333',
+  },
+  subHeading: {
+    fontSize: '1.5rem',
+    color: '#444',
+    textAlign: 'center',
+  },
+  chartContainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  barChart: {
+    width: '100%',
+    height: '300px',
+  },
+  pieChart: {
+    width: '400px',
+    height: '400px',
+  },
+  totalCalories: {
+    textAlign: 'center',
+    padding: '10px',
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+  },
+  caloriesText: {
+    fontSize: '1.5rem',
+    color: '#ff5733',
+  },
+};
 
 export default WorkoutStats;

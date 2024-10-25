@@ -1,73 +1,85 @@
-body {
-  margin: 0; /* Remove default margin */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-}
+/* App.css */
 
-/* Header styles */
-.App-header {
+/* Styles for the authenticated view */
+.app-header {
   display: flex;
-  justify-content: space-between; /* Space between the website name and login button */
-  align-items: center; /* Center items vertically */
-  padding: 10px 20px; /* Padding around the header */
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for contrast */
-  position: relative; /* Changed from fixed to relative */
-  height: 50px; /* Set a fixed height for the header */
-  z-index: 1; /* Ensure the header is above other elements */
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #2c3e50; /* Dark blue header */
+  color: white;
 }
 
-.website-name {
-  font-size: 1.5rem; /* Adjust font size */
-  color: #ffffff; /* White color for the text */
-  font-weight: bold; /* Make the text bold */
+.app-title {
+  font-size: 2rem;
 }
 
-/* Button container styles */
-.button-container {
+.nav-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #2c3e50; /* Button text color matching the header color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+
+/* Specific style for the "Log Workout" button */
+.nav-buttons button.log-workout {
+  background-color: #007bff; /* Primary blue color */
+  color: white; /* White text for contrast */
+}
+
+.nav-buttons button.log-workout:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for the login view */
+.login-container {
   display: flex;
-  justify-content: flex-end; /* Align button to the right */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
 }
 
-/* Full image styling */
-.image-container {
-  width: 100vw; /* Full width of the viewport */
-  height: calc(100vh - 50px); /* Full height of the viewport minus header height */
-  overflow: hidden; /* Prevent overflow */
-  margin: 0; /* Remove any default margin */
-  padding: 0; /* Remove any padding */
+.login-content {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.full-image {
-  width: 100%; /* Full width of the container */
-  height: 100%; /* Full height of the container */
-  object-fit: cover; /* Cover the entire area without distortion */
+.login-image {
+  width: 300px;
+  height: 400px;
+  margin-right: 40px;
+  border-radius: 8px;
 }
 
-/* Styles for buttons */
-button {
-  margin: 10px; /* Space around buttons */
-  padding: 10px 20px; /* Button padding */
-  font-size: 16px; /* Font size */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #4CAF50; /* Green background */
-  color: white; /* White text color */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth background transition */
+.login-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Change button color on hover */
-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+.login-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* User profile styles */
-.user-profile {
-  position: absolute; /* Positioning */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Centering */
-  color: white; /* Text color */
-  z-index: 1; /* Above the image */
+.login-button:hover {
+  background-color: #45a049;
 }

@@ -1,19 +1,37 @@
 /* ExploreExercises.css */
+
 .exercise-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-  }
-  
-  .exercise-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    text-align: center;
-  }
-  
-  .exercise-card img {
-    max-width: 100%;
-    height: auto;
-  }
-  
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center the items horizontally */
+  gap: 20px; /* Add some space between the exercise cards */
+}
+
+.exercise-card {
+  width: 320px; /* Set a fixed width for the exercise cards */
+  text-align: center;
+  border: 2px solid #ddd; /* Add border around the entire card */
+  border-radius: 12px; /* Round the corners of the card */
+  padding: 20px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Add shadow to the card */
+  transition: transform 0.3s ease-in-out;
+  background-color: #f9f9f9; /* Light background for the card */
+}
+
+.exercise-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card when hovered */
+}
+
+.exercise-card img {
+  width: 100%;
+  height: auto;
+  border: 3px solid #4CAF50; /* Add a green border around the GIF */
+  border-radius: 8px; /* Slightly round the corners of the GIF */
+  margin-bottom: 15px;
+}
+
+.exercise-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333; /* Darker color for the exercise title */
+}

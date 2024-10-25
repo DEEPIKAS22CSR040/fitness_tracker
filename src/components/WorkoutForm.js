@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // Import axios
+import axios from 'axios';
 import { fetchExercises } from '../api/exerciseApi';
-import { useAuth0 } from '@auth0/auth0-react'; // Import Auth0 hook
+import { useAuth0 } from '@auth0/auth0-react';
+import './WorkoutForm.css'; // Import the CSS file
 
 const WorkoutForm = () => {
-  const { user } = useAuth0(); // Get user information
+  const { user } = useAuth0();
   const [exercises, setExercises] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState('');
   const [duration, setDuration] = useState(0);
   const [caloriesBurned, setCaloriesBurned] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [message, setMessage] = useState(''); // For success/error messages
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const loadExercises = async () => {
@@ -32,7 +33,7 @@ const WorkoutForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const userId = user.email; // Using user's email as unique ID
+    const userId = user.email;
 
     try {
       const response = await axios.post('http://localhost:5000/saveWorkout', {
@@ -43,10 +44,10 @@ const WorkoutForm = () => {
       });
 
       console.log('Workout logged successfully:', response.data);
-      setMessage('Workout logged successfully!'); // Display success message
+      setMessage('Workout logged successfully!');
     } catch (error) {
       console.error('Error logging workout:', error);
-      setMessage('Error logging workout. Please try again.'); // Display error message
+      setMessage('Error logging workout. Please try again.');
     }
   };
 
@@ -54,10 +55,11 @@ const WorkoutForm = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form className="workout-form" onSubmit={handleSubmit}>
+      <label className="form-label">
         Select Exercise:
         <select 
+          className="form-select"
           value={selectedExercise} 
           onChange={(e) => setSelectedExercise(e.target.value)}
         >
@@ -69,24 +71,29 @@ const WorkoutForm = () => {
           ))}
         </select>
       </label>
-      <label>
+
+      <label className="form-label">
         Duration (minutes):
         <input 
+          className="form-input"
           type="number" 
           value={duration} 
           onChange={(e) => setDuration(e.target.value)} 
         />
       </label>
-      <label>
+
+      <label className="form-label">
         Calories Burned:
         <input 
+          className="form-input"
           type="number" 
           value={caloriesBurned} 
           onChange={(e) => setCaloriesBurned(e.target.value)} 
         />
       </label>
-      <button type="submit">Log Workout</button>
-      {message && <div>{message}</div>} {/* Display message to user */}
+
+      <button className="form-button" type="submit">Log Workout</button>
+      {message && <div className="form-message">{message}</div>}
     </form>
   );
 };

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import './WorkoutHistory.css'; // Import the CSS file
 
 function WorkoutHistory() {
-  const { user } = useAuth0(); // Get the logged-in user info from Auth0
+  const { user } = useAuth0();
   const [workouts, setWorkouts] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch workout history when component mounts
     const fetchWorkoutHistory = async () => {
       try {
         const response = await axios.get(
@@ -27,19 +27,19 @@ function WorkoutHistory() {
   }, [user]);
 
   return (
-    <div>
+    <div className="workout-history">
       <h2>Your Workout History</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
       {workouts.length === 0 ? (
-        <p>No workouts logged yet.</p>
+        <p className="no-workouts">No workouts logged yet.</p>
       ) : (
-        <ul>
+        <ul className="workout-list">
           {workouts.map((workout) => (
-            <li key={workout._id}>
-              <p>Type: {workout.workoutType}</p>
-              <p>Duration: {workout.duration} minutes</p>
-              <p>Calories Burned: {workout.caloriesBurned}</p>
-              <p>Date: {new Date(workout.date).toLocaleDateString()}</p>
+            <li key={workout._id} className="workout-item">
+              <p><strong>Type:</strong> {workout.workoutType}</p>
+              <p><strong>Duration:</strong> {workout.duration} minutes</p>
+              <p><strong>Calories Burned:</strong> {workout.caloriesBurned}</p>
+              <p><strong>Date:</strong> {new Date(workout.date).toLocaleDateString()}</p>
             </li>
           ))}
         </ul>

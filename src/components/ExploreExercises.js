@@ -1,24 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchExercises } from '../api/exerciseApi'; // Adjust path if necessary
-import styled from 'styled-components'; // Import styled-components
-import './ExploreExercises.css'; 
-const ExerciseGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-`;
-
-const ExerciseCard = styled.div`
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-`;
-
-const ExerciseImage = styled.img`
-  max-width: 100%;
-  height: auto;
-`;
+import { fetchExercises } from '../api/exerciseApi';
+import './ExploreExercises.css';
 
 const ExploreExercises = () => {
   const [exercises, setExercises] = useState([]);
@@ -47,14 +29,14 @@ const ExploreExercises = () => {
   return (
     <div>
       <h2>Explore Exercises</h2>
-      <ExerciseGrid>
-        {exercises.map(exercise => (
-          <ExerciseCard key={exercise.id}>
+      <div className="exercise-grid">
+        {exercises.map((exercise) => (
+          <div key={exercise.id} className="exercise-card">
             <h3>{exercise.name}</h3>
-            <ExerciseImage src={exercise.gifUrl} alt={exercise.name} />
-          </ExerciseCard>
+            <img src={exercise.gifUrl} alt={exercise.name} />
+          </div>
         ))}
-      </ExerciseGrid>
+      </div>
     </div>
   );
 };
